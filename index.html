@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hector Hosting — Premium VPS Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- SPLASH SCREEN -->
+  <div id="splash">
+    <div class="splash-ring splash-ring-1"></div>
+    <div class="splash-ring splash-ring-2"></div>
+    <div class="splash-ring splash-ring-3"></div>
+    <div class="splash-logo-wrap">
+      <svg class="splash-h" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="blueGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#60a5fa"/>
+            <stop offset="100%" stop-color="#1d4ed8"/>
+          </linearGradient>
+          <linearGradient id="grayGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#6b7280"/>
+            <stop offset="100%" stop-color="#374151"/>
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="2" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <!-- Left diagonal shard (blue) -->
+        <polygon points="18,8 42,8 38,52 14,52" fill="url(#blueGrad)" filter="url(#glow)" opacity="0.95"/>
+        <!-- Right diagonal shard (gray) -->
+        <polygon points="58,48 82,48 86,92 62,92" fill="url(#grayGrad)"/>
+        <!-- Crossbar -->
+        <polygon points="14,52 86,48 86,56 14,60" fill="url(#grayGrad)"/>
+        <!-- Blue accent edge on right shard -->
+        <polygon points="62,92 64,92 68,48 58,48" fill="#3b82f6" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="splash-title">HECTOR HOSTING</div>
+    <div class="splash-bar"><div class="splash-bar-fill"></div></div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <svg class="nav-h" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="navBlue" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#60a5fa"/>
+              <stop offset="100%" stop-color="#1d4ed8"/>
+            </linearGradient>
+            <linearGradient id="navGray" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#6b7280"/>
+              <stop offset="100%" stop-color="#374151"/>
+            </linearGradient>
+          </defs>
+          <polygon points="18,8 42,8 38,52 14,52" fill="url(#navBlue)" opacity="0.95"/>
+          <polygon points="58,48 82,48 86,92 62,92" fill="url(#navGray)"/>
+          <polygon points="14,52 86,48 86,56 14,60" fill="url(#navGray)"/>
+          <polygon points="62,92 64,92 68,48 58,48" fill="#3b82f6" opacity="0.5"/>
+        </svg>
+        <span>HECTOR HOSTING</span>
+      </div>
+      <div class="nav-links">
+        <a href="#plans">Plans</a>
+        <a href="#locations">Locations</a>
+        <a href="#features">Features</a>
+        <a href="admin/index.html" class="nav-admin">Admin</a>
+      </div>
+      <button class="nav-toggle" id="navToggle">&#9776;</button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="#plans">Plans</a>
+      <a href="#locations">Locations</a>
+      <a href="#features">Features</a>
+      <a href="admin/index.html">Admin</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-badge">⚡ Instant Setup • DDoS Protection • 99.9% Uptime</div>
+      <h1 class="hero-title">DOMINATE<br/><span class="hero-accent">YOUR SERVER</span></h1>
+      <p class="hero-sub">High-performance VPS hosting built for speed, power, and reliability. Deploy in seconds with dedicated IPv4 and NVMe storage.</p>
+      <div class="hero-cta">
+        <a href="#plans" class="btn-primary">VIEW PLANS &nbsp;→</a>
+        <a href="#features" class="btn-ghost">OUR FEATURES</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">99.9%</span><span class="stat-label">Uptime SLA</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">1 Gbps</span><span class="stat-label">Network Port</span></div>
+        <div class="stat-div"></div>
+        <div class="stat"><span class="stat-num">NVMe</span><span class="stat-label">SSD Storage</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg class="hero-h" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="heroBlue" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#93c5fd"/>
+            <stop offset="100%" stop-color="#1d4ed8"/>
+          </linearGradient>
+          <linearGradient id="heroGray" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#9ca3af"/>
+            <stop offset="100%" stop-color="#1f2937"/>
+          </linearGradient>
+          <filter id="heroGlow">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <polygon points="18,8 42,8 38,52 14,52" fill="url(#heroBlue)" filter="url(#heroGlow)" opacity="0.95"/>
+        <polygon points="58,48 82,48 86,92 62,92" fill="url(#heroGray)"/>
+        <polygon points="14,52 86,48 86,56 14,60" fill="url(#heroGray)"/>
+        <polygon points="62,92 64,92 68,48 58,48" fill="#3b82f6" opacity="0.6"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- LOCATIONS -->
+  <section class="locations" id="locations">
+    <div class="section-label">VPS LOCATIONS</div>
+    <h2 class="section-title">Deploy Globally</h2>
+    <div class="locations-grid" id="locationsGrid">
+      <!-- filled by JS -->
+    </div>
+  </section>
+
+  <!-- PLANS -->
+  <section class="plans-section" id="plans">
+    <div class="section-label">HOSTING PLANS</div>
+    <h2 class="section-title">Choose Your Power</h2>
+
+    <!-- Category Tabs -->
+    <div class="category-tabs" id="categoryTabs">
+      <!-- filled by JS -->
+    </div>
+
+    <!-- Plans Grid -->
+    <div class="plans-grid" id="plansGrid">
+      <!-- filled by JS -->
+    </div>
+    <div class="no-plans" id="noPlans" style="display:none">No plans available in this category yet.</div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="section-label">WHY HECTOR</div>
+    <h2 class="section-title">Built Different</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>DDoS Protection</h3>
+        <p>Enterprise-grade mitigation on every plan. Your server stays online, no matter what.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Instant Deploy</h3>
+        <p>Your VPS is live in under 60 seconds. No waiting, no tickets, just power.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💾</div>
+        <h3>NVMe Storage</h3>
+        <p>Pure NVMe SSD on all plans. Blazing I/O speeds that traditional SSDs can't match.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌐</div>
+        <h3>1 Gbps Network</h3>
+        <p>Dedicated gigabit port with low-latency routing. Stream, serve, and scale freely.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Dedicated IPv4</h3>
+        <p>Each VPS gets its own dedicated IPv4 address — not shared, not limited.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🖥️</div>
+        <h3>Full Root Access</h3>
+        <p>Complete control over your environment. Install anything, configure everything.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" width="32" height="32">
+        <defs>
+          <linearGradient id="ftBlue" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#60a5fa"/>
+            <stop offset="100%" stop-color="#1d4ed8"/>
+          </linearGradient>
+          <linearGradient id="ftGray" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#6b7280"/>
+            <stop offset="100%" stop-color="#374151"/>
+          </linearGradient>
+        </defs>
+        <polygon points="18,8 42,8 38,52 14,52" fill="url(#ftBlue)" opacity="0.95"/>
+        <polygon points="58,48 82,48 86,92 62,92" fill="url(#ftGray)"/>
+        <polygon points="14,52 86,48 86,56 14,60" fill="url(#ftGray)"/>
+        <polygon points="62,92 64,92 68,48 58,48" fill="#3b82f6" opacity="0.5"/>
+      </svg>
+      <span>HECTOR HOSTING</span>
+    </div>
+    <p class="footer-copy">© 2026 Hector Hosting. All rights reserved.</p>
+  </footer>
+
+  <!-- DEPLOY MODAL -->
+  <div class="modal-overlay" id="deployModal" style="display:none" onclick="if(event.target===this)closeDeployModal()">
+    <div class="deploy-modal">
+      <button class="deploy-modal-close" onclick="closeDeployModal()">✕</button>
+
+      <!-- Discord logo icon -->
+      <div class="deploy-discord-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+          <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z" fill="#5865F2"/>
+        </svg>
+      </div>
+
+      <div class="deploy-modal-badge">ORDER PROCESS</div>
+      <h2 class="deploy-modal-title">Ready to Deploy?</h2>
+      <p class="deploy-modal-sub">
+        To get started, join our Discord server and open a <strong>support ticket</strong>. Our team will set up your VPS instantly.
+      </p>
+
+      <div class="deploy-steps">
+        <div class="deploy-step">
+          <div class="step-num">1</div>
+          <div class="step-text">Join the Hector Hosting Discord server</div>
+        </div>
+        <div class="deploy-step">
+          <div class="step-num">2</div>
+          <div class="step-text">Go to <strong>#create-ticket</strong> and open a new ticket</div>
+        </div>
+        <div class="deploy-step">
+          <div class="step-num">3</div>
+          <div class="step-text">Mention the plan you want and our team deploys it for you</div>
+        </div>
+      </div>
+
+      <div class="deploy-plan-info" id="deployPlanInfo"></div>
+
+      <a id="discordBtn" href="YOUR_DISCORD_INVITE_HERE" target="_blank" class="discord-join-btn">
+        <svg viewBox="0 0 24 24" fill="white" width="20" height="20" style="flex-shrink:0">
+          <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+        </svg>
+        JOIN SERVER & CREATE TICKET
+      </a>
+      <p class="deploy-modal-note">You'll be redirected to our Discord server</p>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
