@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hector Hosting — Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <!-- LOGIN GATE -->
+  <div id="loginGate">
+    <div class="login-box">
+      <div class="login-logo">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" width="56" height="56">
+          <defs>
+            <linearGradient id="lgBlue" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#60a5fa"/>
+              <stop offset="100%" stop-color="#1d4ed8"/>
+            </linearGradient>
+            <linearGradient id="lgGray" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#6b7280"/>
+              <stop offset="100%" stop-color="#374151"/>
+            </linearGradient>
+          </defs>
+          <polygon points="18,8 42,8 38,52 14,52" fill="url(#lgBlue)" opacity="0.95"/>
+          <polygon points="58,48 82,48 86,92 62,92" fill="url(#lgGray)"/>
+          <polygon points="14,52 86,48 86,56 14,60" fill="url(#lgGray)"/>
+          <polygon points="62,92 64,92 68,48 58,48" fill="#3b82f6" opacity="0.5"/>
+        </svg>
+      </div>
+      <div class="login-title">ADMIN ACCESS</div>
+      <div class="login-sub">Hector Hosting Control Panel</div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="pwInput" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')doLogin()" />
+      </div>
+      <div class="login-error" id="loginError"></div>
+      <button class="admin-btn-primary" onclick="doLogin()">UNLOCK PANEL</button>
+      <a href="../index.html" class="back-link">← Back to Website</a>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div id="adminPanel" style="display:none">
+
+    <div class="admin-sidebar">
+      <div class="sidebar-logo">
+        <svg viewBox="0 0 100 100" fill="none" width="28" height="28">
+          <defs>
+            <linearGradient id="sbBlue" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#60a5fa"/>
+              <stop offset="100%" stop-color="#1d4ed8"/>
+            </linearGradient>
+            <linearGradient id="sbGray" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#6b7280"/>
+              <stop offset="100%" stop-color="#374151"/>
+            </linearGradient>
+          </defs>
+          <polygon points="18,8 42,8 38,52 14,52" fill="url(#sbBlue)" opacity="0.95"/>
+          <polygon points="58,48 82,48 86,92 62,92" fill="url(#sbGray)"/>
+          <polygon points="14,52 86,48 86,56 14,60" fill="url(#sbGray)"/>
+          <polygon points="62,92 64,92 68,48 58,48" fill="#3b82f6" opacity="0.5"/>
+        </svg>
+        <span>HECTOR</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="snav active" data-tab="plans" onclick="switchTab('plans',this)">📋 Plans</a>
+        <a href="#" class="snav" data-tab="categories" onclick="switchTab('categories',this)">🏷️ Categories</a>
+        <a href="#" class="snav" data-tab="locations" onclick="switchTab('locations',this)">🌍 Locations</a>
+        <a href="#" class="snav" data-tab="password" onclick="switchTab('password',this)">🔑 Password</a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../index.html" class="sidebar-back">← View Site</a>
+        <button class="sidebar-logout" onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <div class="admin-main">
+
+      <!-- PLANS TAB -->
+      <div class="admin-tab" id="tab-plans">
+        <div class="tab-header">
+          <h1>Manage Plans</h1>
+          <button class="admin-btn-primary" onclick="openPlanModal()">+ Add Plan</button>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table" id="plansTable">
+            <thead>
+              <tr><th>Name</th><th>Category</th><th>Price</th><th>RAM</th><th>CPU</th><th>Storage</th><th>Location</th><th>Popular</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="plansTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CATEGORIES TAB -->
+      <div class="admin-tab" id="tab-categories" style="display:none">
+        <div class="tab-header">
+          <h1>Manage Categories</h1>
+          <button class="admin-btn-primary" onclick="openCatModal()">+ Add Category</button>
+        </div>
+        <div class="admin-list" id="catList"></div>
+      </div>
+
+      <!-- LOCATIONS TAB -->
+      <div class="admin-tab" id="tab-locations" style="display:none">
+        <div class="tab-header">
+          <h1>Manage Locations</h1>
+          <button class="admin-btn-primary" onclick="openLocModal()">+ Add Location</button>
+        </div>
+        <div class="admin-list" id="locList"></div>
+      </div>
+
+      <!-- PASSWORD TAB -->
+      <div class="admin-tab" id="tab-password" style="display:none">
+        <div class="tab-header"><h1>Change Password</h1></div>
+        <div class="settings-card">
+          <div class="form-group">
+            <label>Current Password</label>
+            <input type="password" id="curPw" placeholder="Current password" />
+          </div>
+          <div class="form-group">
+            <label>New Password</label>
+            <input type="password" id="newPw" placeholder="New password" />
+          </div>
+          <div class="form-group">
+            <label>Confirm New Password</label>
+            <input type="password" id="confirmPw" placeholder="Confirm new password" />
+          </div>
+          <div id="pwChangeMsg" class="form-msg"></div>
+          <button class="admin-btn-primary" onclick="changePassword()">UPDATE PASSWORD</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PLAN MODAL -->
+  <div class="modal-overlay" id="planModal" style="display:none">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="planModalTitle">Add Plan</h2>
+        <button class="modal-close" onclick="closePlanModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="planId" />
+        <div class="form-row">
+          <div class="form-group">
+            <label>Plan Name *</label>
+            <input type="text" id="planName" placeholder="e.g. VLTN - PRO" />
+          </div>
+          <div class="form-group">
+            <label>Category *</label>
+            <select id="planCategory"></select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Price *</label>
+            <input type="number" id="planPrice" placeholder="e.g. 1199" />
+          </div>
+          <div class="form-group">
+            <label>Currency Symbol</label>
+            <input type="text" id="planCurrency" placeholder="₹" value="₹" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>RAM *</label>
+            <input type="text" id="planRam" placeholder="e.g. 24 GB RAM" />
+          </div>
+          <div class="form-group">
+            <label>CPU *</label>
+            <input type="text" id="planCpu" placeholder="e.g. 6 vCores" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Storage *</label>
+            <input type="text" id="planStorage" placeholder="e.g. 200 GB NVMe" />
+          </div>
+          <div class="form-group">
+            <label>Network</label>
+            <input type="text" id="planNetwork" placeholder="1 Gbps Port" value="1 Gbps Port" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>IP Address</label>
+            <input type="text" id="planIp" placeholder="1 Dedicated IPv4" value="1 Dedicated IPv4" />
+          </div>
+          <div class="form-group">
+            <label>Location</label>
+            <select id="planLocation"></select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Deploy URL</label>
+            <input type="text" id="planDeployUrl" placeholder="https://..." />
+          </div>
+          <div class="form-group form-check">
+            <label class="checkbox-label">
+              <input type="checkbox" id="planPopular" />
+              Mark as Most Popular
+            </label>
+          </div>
+        </div>
+        <div id="planModalError" class="form-msg error"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="admin-btn-ghost" onclick="closePlanModal()">Cancel</button>
+        <button class="admin-btn-primary" onclick="savePlan()">SAVE PLAN</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORY MODAL -->
+  <div class="modal-overlay" id="catModal" style="display:none">
+    <div class="modal modal-sm">
+      <div class="modal-header">
+        <h2>Add Category</h2>
+        <button class="modal-close" onclick="closeCatModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Category Name *</label>
+          <input type="text" id="catName" placeholder="e.g. Enterprise" />
+        </div>
+        <div id="catModalError" class="form-msg error"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="admin-btn-ghost" onclick="closeCatModal()">Cancel</button>
+        <button class="admin-btn-primary" onclick="saveCat()">ADD CATEGORY</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOCATION MODAL -->
+  <div class="modal-overlay" id="locModal" style="display:none">
+    <div class="modal modal-sm">
+      <div class="modal-header">
+        <h2>Add Location</h2>
+        <button class="modal-close" onclick="closeLocModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Location ID * (unique slug, e.g. us-la)</label>
+          <input type="text" id="locId" placeholder="e.g. us-la" />
+        </div>
+        <div class="form-group">
+          <label>Flag Emoji *</label>
+          <input type="text" id="locFlag" placeholder="🇺🇸" />
+        </div>
+        <div class="form-group">
+          <label>City / Name *</label>
+          <input type="text" id="locName" placeholder="e.g. Los Angeles" />
+        </div>
+        <div class="form-group">
+          <label>Country *</label>
+          <input type="text" id="locCountry" placeholder="e.g. USA" />
+        </div>
+        <div id="locModalError" class="form-msg error"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="admin-btn-ghost" onclick="closeLocModal()">Cancel</button>
+        <button class="admin-btn-primary" onclick="saveLoc()">ADD LOCATION</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/data.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
+
